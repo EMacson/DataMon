@@ -50,8 +50,11 @@ def clean_combat_data(input_path=RAW_PATH, output_path=PROCESSED_PATH, pokemon_p
         how='left'
     )
 
+    # Add the Winner_bool column: 1 if First_pokemon is the Winner, else 0
+    df['Winner_bool'] = (df['Winner'] == df['First_pokemon']).astype(int)
+
     #df = df[['First_pokemon', 'First_#', 'Second_pokemon', 'Second_#', 'Winner']]
-    df = df[['First_pokemon', 'First_Name', 'Second_pokemon', 'Second_Name', 'Winner', 'Winner_Name']]
+    df = df[['First_pokemon', 'First_Name', 'Second_pokemon', 'Second_Name', 'Winner', 'Winner_Name', 'Winner_bool']]
 
     '''
     for _, row in df.iterrows():
