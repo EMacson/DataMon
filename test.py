@@ -177,3 +177,4 @@ for attacker in TYPE_CHART:
     for defender in TYPE_CHART[attacker]:
         value = TYPE_CHART[attacker][defender]
         print(f"TYPE_CHART['{attacker}']['{defender}'] = {value}")
+        

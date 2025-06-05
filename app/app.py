@@ -6,6 +6,7 @@ import plotly.graph_objects as go
 import plotly.express as px
 import streamlit.components.v1 as components
 from src.analysis.team_evaluator import evaluate_team
+from src.analysis.recommender import recommend_teammates
 
 def plot_radar(stats_dict):
     categories = list(stats_dict.keys())
@@ -61,8 +62,13 @@ st.markdown("Enter your team of 6 Pokémon to see stats, type coverage, weakness
 
 team = []
 for i in range(6):
-    name = st.selectbox(f"Pokémon {i + 1}", options=pokemon_names, key=f"poke_{i}")
-    team.append(name)
+    name = st.selectbox(
+        f"Pokémon {i + 1}",
+        options=[""] + list(pokemon_names),  # Add empty string as default
+        key=f"poke_{i}"
+    )
+    if name:
+        team.append(name)
 
 if st.button("Evaluate Team"):
     try:
@@ -99,3 +105,17 @@ if st.button("Evaluate Team"):
 
     except ValueError as e:
         st.error(str(e))
+
+ #---- Teammate Recommendations ----#
+if st.button("Generate Team"):
+    if len(team) < 6:
+        st.subheader("🧠 Recommended Teammates")
+        recs = recommend_teammates(team, df)
+
+        for name, score, warnings in recs:
+            st.markdown(f"**{name}** — Score: {score:.1f}")
+            if warnings:
+                for w in warnings:
+                    st.caption(f"⚠️ {w}")
+    else:
+        st.info("Team is full — no recommendations needed.")
