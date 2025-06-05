@@ -1,0 +1,496 @@
+# src/team_analysis/type_chart.py
+
+TYPES = ['Normal', 'Fire', 'Water', 'Grass', 'Electric', 'Ice', 'Fighting', 'Poison', 
+         'Ground', 'Flying', 'Psychic', 'Bug', 'Rock', 'Ghost', 'Dragon', 'Dark', 'Steel', 'Fairy']
+
+# Sample: TYPE_CHART['Fire']['Grass'] = 2.0
+TYPE_CHART = {att: {def_: 1.0 for def_ in TYPES} for att in TYPES}
+
+
+TYPE_CHART['Normal']['Normal'] = 1.0
+TYPE_CHART['Normal']['Fire'] = 1.0
+TYPE_CHART['Normal']['Water'] = 1.0
+TYPE_CHART['Normal']['Grass'] = 1.0
+TYPE_CHART['Normal']['Electric'] = 1.0
+TYPE_CHART['Normal']['Ice'] = 1.0
+TYPE_CHART['Normal']['Fighting'] = 1.0
+TYPE_CHART['Normal']['Poison'] = 1.0
+TYPE_CHART['Normal']['Ground'] = 1.0
+TYPE_CHART['Normal']['Flying'] = 1.0
+TYPE_CHART['Normal']['Psychic'] = 1.0
+TYPE_CHART['Normal']['Bug'] = 1.0
+TYPE_CHART['Normal']['Rock'] = 0.5
+TYPE_CHART['Normal']['Ghost'] = 0.0
+TYPE_CHART['Normal']['Dragon'] = 1.0
+TYPE_CHART['Normal']['Dark'] = 1.0
+TYPE_CHART['Normal']['Steel'] = 0.5
+TYPE_CHART['Normal']['Fairy'] = 1.0
+TYPE_CHART['Fire']['Normal'] = 1.0
+TYPE_CHART['Fire']['Fire'] = 0.5
+TYPE_CHART['Fire']['Water'] = 0.5
+TYPE_CHART['Fire']['Grass'] = 2.0
+TYPE_CHART['Fire']['Electric'] = 1.0
+TYPE_CHART['Fire']['Ice'] = 2.0
+TYPE_CHART['Fire']['Fighting'] = 1.0
+TYPE_CHART['Fire']['Poison'] = 1.0
+TYPE_CHART['Fire']['Ground'] = 1.0
+TYPE_CHART['Fire']['Flying'] = 1.0
+TYPE_CHART['Fire']['Psychic'] = 1.0
+TYPE_CHART['Fire']['Bug'] = 2.0
+TYPE_CHART['Fire']['Rock'] = 0.5
+TYPE_CHART['Fire']['Ghost'] = 1.0
+TYPE_CHART['Fire']['Dragon'] = 0.5
+TYPE_CHART['Fire']['Dark'] = 1.0
+TYPE_CHART['Fire']['Steel'] = 2.0
+TYPE_CHART['Fire']['Fairy'] = 1.0
+TYPE_CHART['Water']['Normal'] = 1.0
+TYPE_CHART['Water']['Fire'] = 2.0
+TYPE_CHART['Water']['Water'] = 0.5
+TYPE_CHART['Water']['Grass'] = 0.5
+TYPE_CHART['Water']['Electric'] = 1.0
+TYPE_CHART['Water']['Ice'] = 1.0
+TYPE_CHART['Water']['Fighting'] = 1.0
+TYPE_CHART['Water']['Poison'] = 1.0
+TYPE_CHART['Water']['Ground'] = 2.0
+TYPE_CHART['Water']['Flying'] = 1.0
+TYPE_CHART['Water']['Psychic'] = 1.0
+TYPE_CHART['Water']['Bug'] = 1.0
+TYPE_CHART['Water']['Rock'] = 2.0
+TYPE_CHART['Water']['Ghost'] = 1.0
+TYPE_CHART['Water']['Dragon'] = 0.5
+TYPE_CHART['Water']['Dark'] = 1.0
+TYPE_CHART['Water']['Steel'] = 1.0
+TYPE_CHART['Water']['Fairy'] = 1.0
+TYPE_CHART['Grass']['Normal'] = 1.0
+TYPE_CHART['Grass']['Fire'] = 0.5
+TYPE_CHART['Grass']['Water'] = 2.0
+TYPE_CHART['Grass']['Grass'] = 0.5
+TYPE_CHART['Grass']['Electric'] = 1.0
+TYPE_CHART['Grass']['Ice'] = 1.0
+TYPE_CHART['Grass']['Fighting'] = 1.0
+TYPE_CHART['Grass']['Poison'] = 0.5
+TYPE_CHART['Grass']['Ground'] = 2.0
+TYPE_CHART['Grass']['Flying'] = 0.5
+TYPE_CHART['Grass']['Psychic'] = 1.0
+TYPE_CHART['Grass']['Bug'] = 0.5
+TYPE_CHART['Grass']['Rock'] = 2.0
+TYPE_CHART['Grass']['Ghost'] = 1.0
+TYPE_CHART['Grass']['Dragon'] = 0.5
+TYPE_CHART['Grass']['Dark'] = 1.0
+TYPE_CHART['Grass']['Steel'] = 0.5
+TYPE_CHART['Grass']['Fairy'] = 1.0
+TYPE_CHART['Electric']['Normal'] = 1.0
+TYPE_CHART['Electric']['Fire'] = 1.0
+TYPE_CHART['Electric']['Water'] = 2.0
+TYPE_CHART['Electric']['Grass'] = 0.5
+TYPE_CHART['Electric']['Electric'] = 0.5
+TYPE_CHART['Electric']['Ice'] = 1.0
+TYPE_CHART['Electric']['Fighting'] = 1.0
+TYPE_CHART['Electric']['Poison'] = 1.0
+TYPE_CHART['Electric']['Ground'] = 0.0
+TYPE_CHART['Electric']['Flying'] = 2.0
+TYPE_CHART['Electric']['Psychic'] = 1.0
+TYPE_CHART['Electric']['Bug'] = 1.0
+TYPE_CHART['Electric']['Rock'] = 1.0
+TYPE_CHART['Electric']['Ghost'] = 1.0
+TYPE_CHART['Electric']['Dragon'] = 0.5
+TYPE_CHART['Electric']['Dark'] = 1.0
+TYPE_CHART['Electric']['Steel'] = 1.0
+TYPE_CHART['Electric']['Fairy'] = 1.0
+TYPE_CHART['Ice']['Normal'] = 1.0
+TYPE_CHART['Ice']['Fire'] = 0.5
+TYPE_CHART['Ice']['Water'] = 0.5
+TYPE_CHART['Ice']['Grass'] = 2.0
+TYPE_CHART['Ice']['Electric'] = 1.0
+TYPE_CHART['Ice']['Ice'] = 0.5
+TYPE_CHART['Ice']['Fighting'] = 1.0
+TYPE_CHART['Ice']['Poison'] = 1.0
+TYPE_CHART['Ice']['Ground'] = 2.0
+TYPE_CHART['Ice']['Flying'] = 2.0
+TYPE_CHART['Ice']['Psychic'] = 1.0
+TYPE_CHART['Ice']['Bug'] = 1.0
+TYPE_CHART['Ice']['Rock'] = 1.0
+TYPE_CHART['Ice']['Ghost'] = 1.0
+TYPE_CHART['Ice']['Dragon'] = 2.0
+TYPE_CHART['Ice']['Dark'] = 1.0
+TYPE_CHART['Ice']['Steel'] = 0.5
+TYPE_CHART['Ice']['Fairy'] = 1.0
+TYPE_CHART['Fighting']['Normal'] = 2.0
+TYPE_CHART['Fighting']['Fire'] = 1.0
+TYPE_CHART['Fighting']['Water'] = 1.0
+TYPE_CHART['Fighting']['Grass'] = 1.0
+TYPE_CHART['Fighting']['Electric'] = 1.0
+TYPE_CHART['Fighting']['Ice'] = 2.0
+TYPE_CHART['Fighting']['Fighting'] = 1.0
+TYPE_CHART['Fighting']['Poison'] = 0.5
+TYPE_CHART['Fighting']['Ground'] = 1.0
+TYPE_CHART['Fighting']['Flying'] = 0.5
+TYPE_CHART['Fighting']['Psychic'] = 0.5
+TYPE_CHART['Fighting']['Bug'] = 0.5
+TYPE_CHART['Fighting']['Rock'] = 2.0
+TYPE_CHART['Fighting']['Ghost'] = 0.0
+TYPE_CHART['Fighting']['Dragon'] = 1.0
+TYPE_CHART['Fighting']['Dark'] = 2.0
+TYPE_CHART['Fighting']['Steel'] = 2.0
+TYPE_CHART['Fighting']['Fairy'] = 0.5
+TYPE_CHART['Poison']['Normal'] = 1.0
+TYPE_CHART['Poison']['Fire'] = 1.0
+TYPE_CHART['Poison']['Water'] = 1.0
+TYPE_CHART['Poison']['Grass'] = 2.0
+TYPE_CHART['Poison']['Electric'] = 1.0
+TYPE_CHART['Poison']['Ice'] = 1.0
+TYPE_CHART['Poison']['Fighting'] = 1.0
+TYPE_CHART['Poison']['Poison'] = 0.5
+TYPE_CHART['Poison']['Ground'] = 0.5
+TYPE_CHART['Poison']['Flying'] = 1.0
+TYPE_CHART['Poison']['Psychic'] = 1.0
+TYPE_CHART['Poison']['Bug'] = 1.0
+TYPE_CHART['Poison']['Rock'] = 0.5
+TYPE_CHART['Poison']['Ghost'] = 0.5
+TYPE_CHART['Poison']['Dragon'] = 1.0
+TYPE_CHART['Poison']['Dark'] = 1.0
+TYPE_CHART['Poison']['Steel'] = 0.0
+TYPE_CHART['Poison']['Fairy'] = 2.0
+TYPE_CHART['Ground']['Normal'] = 1.0
+TYPE_CHART['Ground']['Fire'] = 2.0
+TYPE_CHART['Ground']['Water'] = 1.0
+TYPE_CHART['Ground']['Grass'] = 0.5
+TYPE_CHART['Ground']['Electric'] = 2.0
+TYPE_CHART['Ground']['Ice'] = 1.0
+TYPE_CHART['Ground']['Fighting'] = 1.0
+TYPE_CHART['Ground']['Poison'] = 2.0
+TYPE_CHART['Ground']['Ground'] = 1.0
+TYPE_CHART['Ground']['Flying'] = 0.0
+TYPE_CHART['Ground']['Psychic'] = 1.0
+TYPE_CHART['Ground']['Bug'] = 0.5
+TYPE_CHART['Ground']['Rock'] = 2.0
+TYPE_CHART['Ground']['Ghost'] = 1.0
+TYPE_CHART['Ground']['Dragon'] = 1.0
+TYPE_CHART['Ground']['Dark'] = 1.0
+TYPE_CHART['Ground']['Steel'] = 2.0
+TYPE_CHART['Ground']['Fairy'] = 1.0
+TYPE_CHART['Flying']['Normal'] = 1.0
+TYPE_CHART['Flying']['Fire'] = 1.0
+TYPE_CHART['Flying']['Water'] = 1.0
+TYPE_CHART['Flying']['Grass'] = 2.0
+TYPE_CHART['Flying']['Electric'] = 0.5
+TYPE_CHART['Flying']['Ice'] = 1.0
+TYPE_CHART['Flying']['Fighting'] = 2.0
+TYPE_CHART['Flying']['Poison'] = 1.0
+TYPE_CHART['Flying']['Ground'] = 1.0
+TYPE_CHART['Flying']['Flying'] = 1.0
+TYPE_CHART['Flying']['Psychic'] = 1.0
+TYPE_CHART['Flying']['Bug'] = 2.0
+TYPE_CHART['Flying']['Rock'] = 0.5
+TYPE_CHART['Flying']['Ghost'] = 1.0
+TYPE_CHART['Flying']['Dragon'] = 1.0
+TYPE_CHART['Flying']['Dark'] = 1.0
+TYPE_CHART['Flying']['Steel'] = 0.5
+TYPE_CHART['Flying']['Fairy'] = 1.0
+TYPE_CHART['Psychic']['Normal'] = 1.0
+TYPE_CHART['Psychic']['Fire'] = 1.0
+TYPE_CHART['Psychic']['Water'] = 1.0
+TYPE_CHART['Psychic']['Grass'] = 1.0
+TYPE_CHART['Psychic']['Electric'] = 1.0
+TYPE_CHART['Psychic']['Ice'] = 1.0
+TYPE_CHART['Psychic']['Fighting'] = 2.0
+TYPE_CHART['Psychic']['Poison'] = 2.0
+TYPE_CHART['Psychic']['Ground'] = 1.0
+TYPE_CHART['Psychic']['Flying'] = 1.0
+TYPE_CHART['Psychic']['Psychic'] = 0.5
+TYPE_CHART['Psychic']['Bug'] = 1.0
+TYPE_CHART['Psychic']['Rock'] = 1.0
+TYPE_CHART['Psychic']['Ghost'] = 1.0
+TYPE_CHART['Psychic']['Dragon'] = 1.0
+TYPE_CHART['Psychic']['Dark'] = 0.0
+TYPE_CHART['Psychic']['Steel'] = 0.5
+TYPE_CHART['Psychic']['Fairy'] = 1.0
+TYPE_CHART['Bug']['Normal'] = 1.0
+TYPE_CHART['Bug']['Fire'] = 0.5
+TYPE_CHART['Bug']['Water'] = 1.0
+TYPE_CHART['Bug']['Grass'] = 2.0
+TYPE_CHART['Bug']['Electric'] = 1.0
+TYPE_CHART['Bug']['Ice'] = 1.0
+TYPE_CHART['Bug']['Fighting'] = 0.5
+TYPE_CHART['Bug']['Poison'] = 0.5
+TYPE_CHART['Bug']['Ground'] = 1.0
+TYPE_CHART['Bug']['Flying'] = 0.5
+TYPE_CHART['Bug']['Psychic'] = 2.0
+TYPE_CHART['Bug']['Bug'] = 1.0
+TYPE_CHART['Bug']['Rock'] = 1.0
+TYPE_CHART['Bug']['Ghost'] = 0.5
+TYPE_CHART['Bug']['Dragon'] = 1.0
+TYPE_CHART['Bug']['Dark'] = 2.0
+TYPE_CHART['Bug']['Steel'] = 0.5
+TYPE_CHART['Bug']['Fairy'] = 0.5
+TYPE_CHART['Rock']['Normal'] = 1.0
+TYPE_CHART['Rock']['Fire'] = 2.0
+TYPE_CHART['Rock']['Water'] = 1.0
+TYPE_CHART['Rock']['Grass'] = 1.0
+TYPE_CHART['Rock']['Electric'] = 1.0
+TYPE_CHART['Rock']['Ice'] = 2.0
+TYPE_CHART['Rock']['Fighting'] = 0.5
+TYPE_CHART['Rock']['Poison'] = 1.0
+TYPE_CHART['Rock']['Ground'] = 0.5
+TYPE_CHART['Rock']['Flying'] = 2.0
+TYPE_CHART['Rock']['Psychic'] = 1.0
+TYPE_CHART['Rock']['Bug'] = 2.0
+TYPE_CHART['Rock']['Rock'] = 1.0
+TYPE_CHART['Rock']['Ghost'] = 1.0
+TYPE_CHART['Rock']['Dragon'] = 1.0
+TYPE_CHART['Rock']['Dark'] = 1.0
+TYPE_CHART['Rock']['Steel'] = 0.5
+TYPE_CHART['Rock']['Fairy'] = 1.0
+TYPE_CHART['Ghost']['Normal'] = 0.0
+TYPE_CHART['Ghost']['Fire'] = 1.0
+TYPE_CHART['Ghost']['Water'] = 1.0
+TYPE_CHART['Ghost']['Grass'] = 1.0
+TYPE_CHART['Ghost']['Electric'] = 1.0
+TYPE_CHART['Ghost']['Ice'] = 1.0
+TYPE_CHART['Ghost']['Fighting'] = 1.0
+TYPE_CHART['Ghost']['Poison'] = 1.0
+TYPE_CHART['Ghost']['Ground'] = 1.0
+TYPE_CHART['Ghost']['Flying'] = 1.0
+TYPE_CHART['Ghost']['Psychic'] = 2.0
+TYPE_CHART['Ghost']['Bug'] = 1.0
+TYPE_CHART['Ghost']['Rock'] = 1.0
+TYPE_CHART['Ghost']['Ghost'] = 2.0
+TYPE_CHART['Ghost']['Dragon'] = 1.0
+TYPE_CHART['Ghost']['Dark'] = 0.5
+TYPE_CHART['Ghost']['Steel'] = 1.0
+TYPE_CHART['Ghost']['Fairy'] = 1.0
+TYPE_CHART['Dragon']['Normal'] = 1.0
+TYPE_CHART['Dragon']['Fire'] = 1.0
+TYPE_CHART['Dragon']['Water'] = 1.0
+TYPE_CHART['Dragon']['Grass'] = 1.0
+TYPE_CHART['Dragon']['Electric'] = 1.0
+TYPE_CHART['Dragon']['Ice'] = 1.0
+TYPE_CHART['Dragon']['Fighting'] = 1.0
+TYPE_CHART['Dragon']['Poison'] = 1.0
+TYPE_CHART['Dragon']['Ground'] = 1.0
+TYPE_CHART['Dragon']['Flying'] = 1.0
+TYPE_CHART['Dragon']['Psychic'] = 1.0
+TYPE_CHART['Dragon']['Bug'] = 1.0
+TYPE_CHART['Dragon']['Rock'] = 1.0
+TYPE_CHART['Dragon']['Ghost'] = 1.0
+TYPE_CHART['Dragon']['Dragon'] = 2.0
+TYPE_CHART['Dragon']['Dark'] = 1.0
+TYPE_CHART['Dragon']['Steel'] = 0.5
+TYPE_CHART['Dragon']['Fairy'] = 0.0
+TYPE_CHART['Dark']['Normal'] = 1.0
+TYPE_CHART['Dark']['Fire'] = 1.0
+TYPE_CHART['Dark']['Water'] = 1.0
+TYPE_CHART['Dark']['Grass'] = 1.0
+TYPE_CHART['Dark']['Electric'] = 1.0
+TYPE_CHART['Dark']['Ice'] = 1.0
+TYPE_CHART['Dark']['Fighting'] = 0.5
+TYPE_CHART['Dark']['Poison'] = 1.0
+TYPE_CHART['Dark']['Ground'] = 1.0
+TYPE_CHART['Dark']['Flying'] = 1.0
+TYPE_CHART['Dark']['Psychic'] = 2.0
+TYPE_CHART['Dark']['Bug'] = 1.0
+TYPE_CHART['Dark']['Rock'] = 1.0
+TYPE_CHART['Dark']['Ghost'] = 2.0
+TYPE_CHART['Dark']['Dragon'] = 1.0
+TYPE_CHART['Dark']['Dark'] = 0.5
+TYPE_CHART['Dark']['Steel'] = 1.0
+TYPE_CHART['Dark']['Fairy'] = 0.5
+TYPE_CHART['Steel']['Normal'] = 1.0
+TYPE_CHART['Steel']['Fire'] = 0.5
+TYPE_CHART['Steel']['Water'] = 0.5
+TYPE_CHART['Steel']['Grass'] = 1.0
+TYPE_CHART['Steel']['Electric'] = 0.5
+TYPE_CHART['Steel']['Ice'] = 2.0
+TYPE_CHART['Steel']['Fighting'] = 1.0
+TYPE_CHART['Steel']['Poison'] = 1.0
+TYPE_CHART['Steel']['Ground'] = 1.0
+TYPE_CHART['Steel']['Flying'] = 1.0
+TYPE_CHART['Steel']['Psychic'] = 1.0
+TYPE_CHART['Steel']['Bug'] = 1.0
+TYPE_CHART['Steel']['Rock'] = 2.0
+TYPE_CHART['Steel']['Ghost'] = 1.0
+TYPE_CHART['Steel']['Dragon'] = 1.0
+TYPE_CHART['Steel']['Dark'] = 1.0
+TYPE_CHART['Steel']['Steel'] = 0.5
+TYPE_CHART['Steel']['Fairy'] = 2.0
+TYPE_CHART['Fairy']['Normal'] = 1.0
+TYPE_CHART['Fairy']['Fire'] = 0.5
+TYPE_CHART['Fairy']['Water'] = 1.0
+TYPE_CHART['Fairy']['Grass'] = 1.0
+TYPE_CHART['Fairy']['Electric'] = 1.0
+TYPE_CHART['Fairy']['Ice'] = 1.0
+TYPE_CHART['Fairy']['Fighting'] = 2.0
+TYPE_CHART['Fairy']['Poison'] = 0.5
+TYPE_CHART['Fairy']['Ground'] = 1.0
+TYPE_CHART['Fairy']['Flying'] = 1.0
+TYPE_CHART['Fairy']['Psychic'] = 1.0
+TYPE_CHART['Fairy']['Bug'] = 1.0
+TYPE_CHART['Fairy']['Rock'] = 1.0
+TYPE_CHART['Fairy']['Ghost'] = 1.0
+TYPE_CHART['Fairy']['Dragon'] = 2.0
+TYPE_CHART['Fairy']['Dark'] = 2.0
+TYPE_CHART['Fairy']['Steel'] = 0.5
+TYPE_CHART['Fairy']['Fairy'] = 1.0
+
+"""
+# You can manually fill in strong/weak/immune relationships
+# Super effective (2.0)
+TYPE_CHART['Normal']['None'] = 1.0
+TYPE_CHART['Fire']['Grass'] = 2.0
+TYPE_CHART['Fire']['Ice'] = 2.0
+TYPE_CHART['Fire']['Bug'] = 2.0
+TYPE_CHART['Fire']['Steel'] = 2.0
+
+TYPE_CHART['Water']['Fire'] = 2.0
+TYPE_CHART['Water']['Ground'] = 2.0
+TYPE_CHART['Water']['Rock'] = 2.0
+
+TYPE_CHART['Grass']['Water'] = 2.0
+TYPE_CHART['Grass']['Ground'] = 2.0
+TYPE_CHART['Grass']['Rock'] = 2.0
+
+TYPE_CHART['Electric']['Water'] = 2.0
+TYPE_CHART['Electric']['Flying'] = 2.0
+
+TYPE_CHART['Ice']['Grass'] = 2.0
+TYPE_CHART['Ice']['Ground'] = 2.0
+TYPE_CHART['Ice']['Flying'] = 2.0
+TYPE_CHART['Ice']['Dragon'] = 2.0
+
+TYPE_CHART['Fighting']['Normal'] = 2.0
+TYPE_CHART['Fighting']['Ice'] = 2.0
+TYPE_CHART['Fighting']['Rock'] = 2.0
+TYPE_CHART['Fighting']['Dark'] = 2.0
+TYPE_CHART['Fighting']['Steel'] = 2.0
+
+TYPE_CHART['Poison']['Grass'] = 2.0
+TYPE_CHART['Poison']['Fairy'] = 2.0
+
+TYPE_CHART['Ground']['Fire'] = 2.0
+TYPE_CHART['Ground']['Electric'] = 2.0
+TYPE_CHART['Ground']['Poison'] = 2.0
+TYPE_CHART['Ground']['Rock'] = 2.0
+TYPE_CHART['Ground']['Steel'] = 2.0
+
+TYPE_CHART['Flying']['Grass'] = 2.0
+TYPE_CHART['Flying']['Fighting'] = 2.0
+TYPE_CHART['Flying']['Bug'] = 2.0
+
+TYPE_CHART['Psychic']['Fighting'] = 2.0
+TYPE_CHART['Psychic']['Poison'] = 2.0
+
+TYPE_CHART['Bug']['Grass'] = 2.0
+TYPE_CHART['Bug']['Psychic'] = 2.0
+TYPE_CHART['Bug']['Dark'] = 2.0
+
+TYPE_CHART['Rock']['Fire'] = 2.0
+TYPE_CHART['Rock']['Ice'] = 2.0
+TYPE_CHART['Rock']['Flying'] = 2.0
+TYPE_CHART['Rock']['Bug'] = 2.0
+
+TYPE_CHART['Ghost']['Psychic'] = 2.0
+TYPE_CHART['Ghost']['Ghost'] = 2.0
+
+TYPE_CHART['Dragon']['Dragon'] = 2.0
+
+TYPE_CHART['Dark']['Psychic'] = 2.0
+TYPE_CHART['Dark']['Ghost'] = 2.0
+
+TYPE_CHART['Steel']['Ice'] = 2.0
+TYPE_CHART['Steel']['Rock'] = 2.0
+TYPE_CHART['Steel']['Fairy'] = 2.0
+
+TYPE_CHART['Fairy']['Fighting'] = 2.0
+TYPE_CHART['Fairy']['Dragon'] = 2.0
+TYPE_CHART['Fairy']['Dark'] = 2.0
+
+# Not very effective (0.5)
+TYPE_CHART['Normal']['Rock'] = 0.5
+TYPE_CHART['Normal']['Steel'] = 0.5
+
+TYPE_CHART['Fire']['Fire'] = 0.5
+TYPE_CHART['Fire']['Water'] = 0.5
+TYPE_CHART['Fire']['Rock'] = 0.5
+TYPE_CHART['Fire']['Dragon'] = 0.5
+
+TYPE_CHART['Water']['Water'] = 0.5
+TYPE_CHART['Water']['Grass'] = 0.5
+TYPE_CHART['Water']['Dragon'] = 0.5
+
+TYPE_CHART['Grass']['Fire'] = 0.5
+TYPE_CHART['Grass']['Grass'] = 0.5
+TYPE_CHART['Grass']['Poison'] = 0.5
+TYPE_CHART['Grass']['Flying'] = 0.5
+TYPE_CHART['Grass']['Bug'] = 0.5
+TYPE_CHART['Grass']['Dragon'] = 0.5
+TYPE_CHART['Grass']['Steel'] = 0.5
+
+TYPE_CHART['Electric']['Grass'] = 0.5
+TYPE_CHART['Electric']['Electric'] = 0.5
+TYPE_CHART['Electric']['Dragon'] = 0.5
+
+TYPE_CHART['Ice']['Fire'] = 0.5
+TYPE_CHART['Ice']['Water'] = 0.5
+TYPE_CHART['Ice']['Ice'] = 0.5
+TYPE_CHART['Ice']['Steel'] = 0.5
+
+TYPE_CHART['Fighting']['Poison'] = 0.5
+TYPE_CHART['Fighting']['Flying'] = 0.5
+TYPE_CHART['Fighting']['Psychic'] = 0.5
+TYPE_CHART['Fighting']['Bug'] = 0.5
+TYPE_CHART['Fighting']['Fairy'] = 0.5
+
+TYPE_CHART['Poison']['Poison'] = 0.5
+TYPE_CHART['Poison']['Ground'] = 0.5
+TYPE_CHART['Poison']['Rock'] = 0.5
+TYPE_CHART['Poison']['Ghost'] = 0.5
+
+TYPE_CHART['Ground']['Grass'] = 0.5
+TYPE_CHART['Ground']['Bug'] = 0.5
+
+TYPE_CHART['Flying']['Electric'] = 0.5
+TYPE_CHART['Flying']['Rock'] = 0.5
+TYPE_CHART['Flying']['Steel'] = 0.5
+
+TYPE_CHART['Psychic']['Psychic'] = 0.5
+TYPE_CHART['Psychic']['Steel'] = 0.5
+
+TYPE_CHART['Bug']['Fire'] = 0.5
+TYPE_CHART['Bug']['Fighting'] = 0.5
+TYPE_CHART['Bug']['Poison'] = 0.5
+TYPE_CHART['Bug']['Flying'] = 0.5
+TYPE_CHART['Bug']['Ghost'] = 0.5
+TYPE_CHART['Bug']['Steel'] = 0.5
+TYPE_CHART['Bug']['Fairy'] = 0.5
+
+TYPE_CHART['Rock']['Fighting'] = 0.5
+TYPE_CHART['Rock']['Ground'] = 0.5
+TYPE_CHART['Rock']['Steel'] = 0.5
+
+TYPE_CHART['Ghost']['Dark'] = 0.5
+
+TYPE_CHART['Dragon']['Steel'] = 0.5
+
+TYPE_CHART['Dark']['Fighting'] = 0.5
+TYPE_CHART['Dark']['Dark'] = 0.5
+TYPE_CHART['Dark']['Fairy'] = 0.5
+
+TYPE_CHART['Steel']['Fire'] = 0.5
+TYPE_CHART['Steel']['Water'] = 0.5
+TYPE_CHART['Steel']['Electric'] = 0.5
+TYPE_CHART['Steel']['Steel'] = 0.5
+
+TYPE_CHART['Fairy']['Fire'] = 0.5
+TYPE_CHART['Fairy']['Poison'] = 0.5
+TYPE_CHART['Fairy']['Steel'] = 0.5
+
+# No effect (0.0)
+TYPE_CHART['Normal']['Ghost'] = 0.0
+TYPE_CHART['Fighting']['Ghost'] = 0.0
+TYPE_CHART['Poison']['Steel'] = 0.0
+TYPE_CHART['Electric']['Ground'] = 0.0
+TYPE_CHART['Ground']['Flying'] = 0.0
+TYPE_CHART['Psychic']['Dark'] = 0.0
+TYPE_CHART['Ghost']['Normal'] = 0.0
+TYPE_CHART['Dragon']['Fairy'] = 0.0
+"""
