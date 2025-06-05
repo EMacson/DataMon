@@ -110,7 +110,10 @@ if st.button("Evaluate Team"):
 if st.button("Generate Team"):
     if len(team) < 6:
         st.subheader("🧠 Recommended Teammates")
+        print("Calling recommender with:", team)
+
         recs = recommend_teammates(team, df)
+        print("Recs returned:", recs)
 
         for name, score, warnings in recs:
             st.markdown(f"**{name}** — Score: {score:.1f}")
